@@ -4,6 +4,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
+import User from "./models/User.js"
+import Transaction from "./models/Transaction.js"
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -24,6 +27,32 @@ app.get("/", (req,res)=>{
         message : `Welcome to Expense Tracker`
     })
 })
+
+app.post("/signup", async (req,res) => {
+    const { fullName, email, password, dob } =req.body
+
+    const user = new User({ fullName, email, password, dob : new Date(dob) });
+    try{
+        const savedUser = await user.save();
+
+        res.json({ 
+            success : true,
+            data : savedUser,
+            message : `SignUp successful`
+        })
+    }
+    catch(e){
+        res.json({
+            success : false,
+            data : null,
+            message : e.message,
+        })
+    }
+} )
+
+app.post("/login", (req,res)=> {
+    
+} )
 
 const PORT = process.env.PORT || 5000;
 
