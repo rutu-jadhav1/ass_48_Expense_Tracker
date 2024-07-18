@@ -1,4 +1,4 @@
-import Transaction from "./models/Transaction.js"
+import Transaction from "./../models/Transaction.js"
 
 const postTransaction = async (req, res) => {
     const { title, amount, category, type, user } = req.body;
