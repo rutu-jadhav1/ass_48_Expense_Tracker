@@ -14,12 +14,14 @@ const transactionSchema = new Schema({
     },
     type : {
         type : String,
-        required : true,
+        enum : ["debit", "credit"],
     },
     user: {
         type : Schema.Types.ObjectId,
         ref : "User",
     }
+},{
+    timestamps : true
 })
 
 const Transaction =model("Transaction", transactionSchema);

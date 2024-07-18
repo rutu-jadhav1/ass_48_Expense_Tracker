@@ -18,6 +18,8 @@ const userSchema = new Schema({
         type : Date,
         required : true
     },
+},{
+    timestamps : true
 });
 
 const User =model("User", userSchema);
