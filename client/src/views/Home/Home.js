@@ -31,13 +31,30 @@ function Home() {
     }
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/transactions?userId=${user._id}`)
 
-    
+   
     setTransactions(response.data.data)
   }
 
   useEffect(()=>{
     loadTransaction()
   },[user])
+
+  useEffect(()=>{
+    let income = 0
+    let expense = 0
+
+    transactions.forEach((transaction) => {
+      if (transaction.type === 'credit') {
+        income += transaction.amount
+      }
+      else{
+        expense += transaction.amount
+      }
+    })
+
+    setNetIncome(income)
+    setnetExpense(expense)
+  },[transactions])
   return (
     <div>
       <h1 className="home-heading">Hello {user.fullName} 👋</h1>
@@ -84,6 +101,9 @@ function Home() {
       {
         transactions.map((transaction) => {
           const {_id, title, amount, category, type, createdAt} = transaction
+
+
+
           return <TransactionCard
             key={_id}
             _id={_id}
