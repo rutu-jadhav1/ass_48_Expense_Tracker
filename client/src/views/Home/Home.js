@@ -6,6 +6,7 @@ import axios from 'axios'
 import "./Home.css"
 import TransactionCard from '../../components/TransactionCard/TransactionCard'
 import add from "./money.png"
+import { Link } from 'react-router-dom'
 
 function Home() {
   const [user, setUser] = useState('')
@@ -115,8 +116,10 @@ function Home() {
         })
       }
     </div>
-    <img src={add} alt='Add Transaction' className='add-transaction'/>
-      <Toaster />
+    <Link to='/addtransaction'>
+      <img src={add} alt='Add Transaction' className='add-transaction'/>
+    </Link>
+    <Toaster />
     </div>
   )
 }
