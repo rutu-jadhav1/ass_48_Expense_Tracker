@@ -5,6 +5,7 @@ import axios from 'axios'
 
 import "./Home.css"
 import TransactionCard from '../../components/TransactionCard/TransactionCard'
+import add from "./money.png"
 
 function Home() {
   const [user, setUser] = useState('')
@@ -114,6 +115,7 @@ function Home() {
         })
       }
     </div>
+    <img src={add} alt='Add Transaction' className='add-transaction'/>
       <Toaster />
     </div>
   )
