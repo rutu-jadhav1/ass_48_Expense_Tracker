@@ -98,11 +98,10 @@ function Home() {
         </div>
       </div>
 
+    <div className='transactions-container'>
       {
         transactions.map((transaction) => {
           const {_id, title, amount, category, type, createdAt} = transaction
-
-
 
           return <TransactionCard
             key={_id}
@@ -114,7 +113,7 @@ function Home() {
             createdAt={createdAt}/>
         })
       }
-
+    </div>
       <Toaster />
     </div>
   )
