@@ -9,6 +9,9 @@ import TransactionCard from '../../components/TransactionCard/TransactionCard'
 function Home() {
   const [user, setUser] = useState('')
   const [transactions, setTransactions] = useState([])
+  const [netIncome, setNetIncome] = useState(0)
+  const [netExpense, setnetExpense] = useState(0)
+
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -48,6 +51,35 @@ function Home() {
           window.location.href = '/login'
         }, 3000)
       }}>Logout</span>
+
+      <div className='net-transaction-values'>
+        <div className='net-transaction-value-item'>
+          <span className='net-transaction-value-amount'>
+            + {netIncome}
+          </span>
+          <span className='net-transaction-value-title'>
+            Net Income
+          </span>
+        </div>
+
+        <div className='net-transaction-value-item'>
+          <span className='net-transaction-value-amount'>
+            - {netExpense}
+          </span>
+          <span className='net-transaction-value-title'>
+           Net Expense
+          </span>
+        </div>
+
+        <div className='net-transaction-value-item'>
+          <span className='net-transaction-value-amount'>
+            + {netIncome - netExpense}
+          </span>
+          <span className='net-transaction-value-title'>
+            Net Balance
+          </span>
+        </div>
+      </div>
 
       {
         transactions.map((transaction) => {
