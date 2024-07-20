@@ -24,3 +24,13 @@
     right: 20px;
     bottom: 10px;
 }
+.transaction-delete-btn{
+    background-color:  #006666;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-left: 30px;
+    font-size: 10px;
+    cursor: pointer;
+    border: none;
+}
