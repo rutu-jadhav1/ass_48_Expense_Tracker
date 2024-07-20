@@ -38,7 +38,7 @@ function Home() {
   }
 
   useEffect(()=>{
-    loadTransaction()
+    loadTransaction();
   },[user])
 
   useEffect(()=>{
@@ -112,7 +112,8 @@ function Home() {
             amount={amount}
             category={category}
             type={type}
-            createdAt={createdAt}/>
+            createdAt={createdAt}
+            loadTransaction= {loadTransaction}/>
         })
       }
     </div>
